@@ -1,0 +1,16 @@
+[project]
+name = "pi-scan"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "kivy>=2.3.1",
+]
+
+[dependency-groups]
+dev = [
+    "black>=25.1.0",
+    "gphoto2>=2.6.1 ; sys_platform == 'linux'",
+    "vermin>=1.6.0",
+]

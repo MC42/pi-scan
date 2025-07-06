@@ -1,4 +1,5 @@
 from threading import Thread, Event
+import traceback 
 
 WAITING = 0
 COMPLETE = 1
