@@ -1,4 +1,5 @@
-import os, sys, traceback
+import os
+import traceback
 import chdkptp
 from lupa import LuaError
 import errorlog

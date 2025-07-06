@@ -5,7 +5,6 @@ from PIL import Image as PillowImage
 #py3 via https://stackoverflow.com/questions/28200366/python-3-x-importerror-no-module-named-cstringio
 from io import StringIO
 from kivy.core.image import ImageData as CoreImageData
-from kivy.graphics.texture import Texture
 
 # from jpegtran import JPEGImage
 import math

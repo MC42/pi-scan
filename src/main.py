@@ -7,18 +7,26 @@ from kivy.properties import (
     ObjectProperty,
     ListProperty,
 )
-from kivy.vector import Vector
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.screenmanager import Screen, ScreenManager
-from kivy.uix.widget import Widget
 from kivy.core.window import Window
 from kivy.graphics.transformation import Matrix
-import camera_thread, stick, camera_gphoto, preview, errorlog, preview_thread
+import camera_thread
+import stick
+import camera_gphoto
+import preview
+import errorlog
+import preview_thread
 # We only want to import the chdk variant if we have it in-tree.  Not all versions need this.
 #import camera_chdk
-import os, json, string, re, traceback, errno
+import os
+import json
+import string
+import re
+import traceback
+import errno
 
 # We can only do this on Raspberry Pi platforms; no equivalent package exists
 # for desktop linux systems.  Must be shimmed.

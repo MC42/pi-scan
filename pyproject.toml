@@ -15,5 +15,6 @@ dependencies = [
 dev = [
     "black>=25.1.0",
     "gphoto2>=2.6.1 ; sys_platform == 'linux'",
+    "ruff>=0.12.2",
     "vermin>=1.6.0",
 ]

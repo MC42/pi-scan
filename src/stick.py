@@ -28,7 +28,7 @@ def _search():
                 )
                 if busType == "usb":
                     result.append(Stick(key))
-        except Exception as e:
+        except Exception:
             pass
     return result
 
