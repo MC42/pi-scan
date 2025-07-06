@@ -1,6 +1,9 @@
-import pydbus
+#import pydbus
 
 def search():
+    _search()
+
+def _search():
     bus = dbus.SystemBus()
     udisks = dbus.Interface(
         bus.get_object("org.freedesktop.UDisks2", "/org/freedesktop/UDisks2"),

@@ -15,11 +15,20 @@ from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.uix.widget import Widget
 from kivy.core.window import Window
 from kivy.graphics.transformation import Matrix
-import camera_thread, stick, camera_chdk, camera_gphoto, preview, errorlog, preview_thread
+import camera_thread, stick, camera_gphoto, preview, errorlog, preview_thread
+# We only want to import the chdk variant if we have it in-tree.  Not all versions need this.
+#import camera_chdk
 import os, json, string, re, traceback, errno
-import wiringpi
 
-version = "1.5"
+# We can only do this on Raspberry Pi platforms; no equivalent package exists
+# for desktop linux systems.  Must be shimmed.
+
+is_raspi = False
+
+if is_raspi:
+    import wiringpi
+
+version = "1.6DEV"
 debug = False
 
 odd = None
@@ -1481,8 +1490,9 @@ class ScanApp(App):
         self.manager = ScanRoot()
 
         # Set up GPIO pin for foot pedal
-        os.system("gpio export 21 up")
-        wiringpi.wiringPiSetupSys()
+        if is_raspi:
+            os.system("gpio export 21 up")
+            wiringpi.wiringPiSetupSys()
         # wiringpi.pinMode(21, 0)
         # wiringpi.pullUpDnControl(21, 2)
         self.lastPedal = 0
@@ -1510,15 +1520,16 @@ class ScanApp(App):
         try:
             pass
             # Only trigger a capture when the circuit goes from open to closed
-            nextPedal = wiringpi.digitalRead(21)
-            # print('checkPedal', nextPedal)
-            if (
-                self.lastPedal == 1
-                and nextPedal == 0
-                and "beginCapture" in dir(self.manager.current_screen)
-            ):
-                self.manager.current_screen.beginCapture()
-            self.lastPedal = nextPedal
+            if is_raspi:
+                nextPedal = wiringpi.digitalRead(21)
+                # print('checkPedal', nextPedal)
+                if (
+                    self.lastPedal == 1
+                    and nextPedal == 0
+                    and "beginCapture" in dir(self.manager.current_screen)
+                ):
+                    self.manager.current_screen.beginCapture()
+                self.lastPedal = nextPedal
         except Exception as e:
             handleCrash(e)
         return True
