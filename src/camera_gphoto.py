@@ -63,9 +63,7 @@ def search():
         cameraList = subprocess.check_output(["gphoto2", "--auto-detect"])
         result = parseCameras(cameraList)
     except Exception as e:
-        logging.error(
-            f"Failed to search: {e.args}\n{traceback.format_exc()}"
-        )
+        logging.error(f"Failed to search: {e.args}\n{traceback.format_exc()}")
     return result
 
 

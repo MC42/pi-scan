@@ -10,7 +10,7 @@ Pi Scan is a simple and robust camera controller for book scanners. It was desig
 * Two cameras (Canon PowerShot A2500 or Canon PowerShot ELPH 160 (aka IXUS 160) or Nikon 1 J5)
 * Three 4GB SD Cards (2 for cameras, 1 for Pi). One needs to be micro (for the Pi). The other two need to be standard sized or have adapters.
 * USB Storage device (either an SD Card Reader and fast SD Card or a thumb drive)
-* Input Devices (see below
+* Input Devices (see below)
 
 # Input Device Options
 
